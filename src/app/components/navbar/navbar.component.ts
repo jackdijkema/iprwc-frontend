@@ -9,4 +9,4 @@ import {LucideAngularModule} from 'lucide-angular';
   styleUrls: ['./navbar.component.scss']
 })
 
-export class NavbarComponent { }
+export class NavbarComponent {}
