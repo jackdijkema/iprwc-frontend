@@ -1,12 +1,13 @@
 <header
-  class="sticky inset-0 z-50 border-b backdrop-blur-lg bg-gray-800 text-white border-slate-600"
->
+  class="sticky inset-0 z-50 border-b backdrop-blur-lg bg-gray-800 text-white border-slate-600 font-sans">
   <nav
-    class="mx-auto flex max-w-6xl gap-8 px-6 transition-all duration-200 ease-in-out lg:px-12 py-4 text-white"
-  >
+    class="mx-auto flex max-w-6xl gap-8 px-6 transition-all duration-200 ease-in-out lg:px-12 py-4 text-white">
     <div class="relative flex items-center">
-      <a href="/" class="text-bold">
-        <span class="text-bold text-2xl">Guitar Shop</span></a
+      <a href="/" class="text-bold flex">
+        <lucide-icon
+          name="disc-3"
+          class="text-white hover:animate-spin"></lucide-icon>
+        <span class="text-bold text-2xl">VinylRecordShop</span></a
       >
     </div>
     <ul class="hidden items-center justify-center gap-6 md:flex">
@@ -19,7 +20,7 @@
       <a href="#" class="font-dm text-sm font-medium text-white">
         <lucide-icon name="shopping-cart" class="my-icon"></lucide-icon>
       </a>
-      <a href="#" class="font-dm text-sm font-medium text-white">
+      <a href="/login" class="font-dm text-sm font-medium text-white">
         <lucide-icon name="log-in" class="my-icon"></lucide-icon>
       </a>
     </div>
@@ -32,13 +33,11 @@
           stroke-width="1.5"
           stroke="currentColor"
           aria-hidden="true"
-          class="h-6 w-auto text-white"
-        >
+          class="h-6 w-auto text-white">
           <path
             stroke-linecap="round"
             stroke-linejoin="round"
-            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-          ></path>
+            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
         </svg>
       </button>
     </div>
