@@ -13,7 +13,6 @@ import {
   imports: [
     CommonModule,
     LucideAngularModule.pick({ ShoppingCart, LogIn, Disc3 }),
-    AppModule,
   ],
 })
 export class AppModule { }
