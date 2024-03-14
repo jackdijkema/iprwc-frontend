@@ -3,6 +3,7 @@ import { ApiService } from '../../../services/api.service';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -20,7 +21,8 @@ export class RegisterComponent {
   constructor(
     private apiService: ApiService,
     private router: Router,
-  ) { }
+    private toastr: ToastrService,
+  ) {}
 
   registerUser(): void {
     const payload = {
@@ -32,11 +34,14 @@ export class RegisterComponent {
 
     this.apiService.PostRegister(payload).subscribe({
       next: (response) => {
-        console.log('Registration successful:', response);
-        this.router.navigate(['/']);
+        if (response) {
+          this.toastr.success('Register success!', 'Success!');
+          this.router.navigate(['/customerpanel']);
+        }
       },
       error: (error) => {
         console.error('Registration failed:', error);
+        this.toastr.error('Register Error!', 'Error!');
       },
     });
   }
