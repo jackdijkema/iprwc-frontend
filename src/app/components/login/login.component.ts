@@ -32,8 +32,8 @@ export class LoginComponent {
     this.apiService.PostLogin(payload).subscribe({
       next: (response) => {
         if (response) {
-          this.router.navigate(['/customerpanel']);
-          this.toastr.success('Login success!', 'Sucess!');
+          this.toastr.success('Login success!', 'Success!');
+          this.router.navigate(['/dashboard']);
         }
       },
       error: (error) => {

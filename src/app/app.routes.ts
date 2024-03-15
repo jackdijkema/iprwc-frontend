@@ -4,31 +4,31 @@ import { AdminpanelComponent } from './adminpanel/adminpanel.component';
 import { LoginComponent } from './components/login/login.component';
 import { CustomerpanelComponent } from './customerpanel/customerpanel.component';
 import { RegisterComponent } from './components/register/register.component';
+import { AuthGuard } from '../services/guard/user.guard';
+import { LoginGuard } from '../services/guard/login.guard';
 
 export const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
-    // canActivate: [loginGuard],
   },
   {
-    path: 'customer',
+    path: 'dashboard',
     component: CustomerpanelComponent,
-    // canActivate: [loginGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'admin',
     component: AdminpanelComponent,
-    // canActivate: [loginGuard],
   },
   {
     path: 'login',
     component: LoginComponent,
-    // canActivate: [loginGuard],
+    canActivate: [LoginGuard],
   },
   {
     path: 'register',
     component: RegisterComponent,
-    // canActivate: [loginGuard],
+    canActivate: [LoginGuard],
   },
 ];

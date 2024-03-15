@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { tap } from 'rxjs';
+import { Observable, catchError, tap } from 'rxjs';
 import { Router } from '@angular/router';
-
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -11,6 +11,7 @@ export class ApiService {
   constructor(
     private http: HttpClient,
     private router: Router,
+    private authService: AuthService,
   ) {}
 
   PostLogin(payload: { email: string; password: string }) {
@@ -19,7 +20,7 @@ export class ApiService {
     return this.http.post(apiUrl, payload).pipe(
       tap((response: any) => {
         if (response && response.token) {
-          sessionStorage.setItem('token', response.token);
+          this.authService.setToken(response.token);
         }
       }),
     );
