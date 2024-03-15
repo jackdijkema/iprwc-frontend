@@ -18,6 +18,14 @@
         <a href="/">Products</a>
       </li>
     </ul>
+    <ul class="hidden items-center justify-center gap-6 md:flex">
+      <li
+        class="pt-1.5 font-dm text-sm font-medium text-white"
+        *ngIf="loggedIn()"
+      >
+        <a href="/dashboard">My orders</a>
+      </li>
+    </ul>
     <div class="flex-grow"></div>
     <div class="hidden items-center justify-center gap-6 md:flex">
       <a href="#" class="font-dm text-sm font-medium text-white">
