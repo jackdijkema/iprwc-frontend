@@ -42,4 +42,9 @@ export class ApiService {
       }),
     );
   }
+
+  getProducts(): Observable<any> {
+    const apiUrl = 'http://localhost:8080/api/v1/products';
+    return this.http.get(apiUrl);
+  }
 }

@@ -10,5 +10,5 @@ export const LoginGuard: CanActivateFn = () => {
     return true;
   }
 
-  return router.navigate(['/']);
+  return router.createUrlTree(['/']);
 };

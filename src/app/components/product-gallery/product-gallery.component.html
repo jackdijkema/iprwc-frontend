@@ -1,36 +1,40 @@
 <section class="flex justify-center p-5">
   <section class="grid grid-cols-3 gap-4 p-8">
     <article
-      class="rounded-lg max-w-sm bg-white border border-gray-200 shadow p-3">
+      *ngFor="let product of products"
+      class="rounded-lg max-w-sm bg-white border border-gray-200 shadow p-3"
+    >
       <img
         class="rounded-xl bg-gray-200"
-        src="https://www.turntablelab.com/cdn/shop/files/elliotsmith-eitheror-blackvinyl-2_1000x1000.jpg?v=1689173355"
-        alt="this is product pic" />
+        [src]="product.photoUrl"
+        alt="Product Image"
+      />
       <section class="p-2">
         <h2 class="mb-2 text-4xl font-bold tracking-tight text-gray-900">
-          Either/Or
+          {{ product.name }}
         </h2>
         <div class="flex justify-start">
           <h5
-            class="border-sky-950 rounded-xl text-2xl font-bold cursor-default">
-            $100
+            class="border-sky-950 rounded-xl text-2xl font-bold cursor-default"
+          >
+            ${{ product.price }}
           </h5>
         </div>
         <h5 class="mb-2 text-1xl font-bold tracking-tight text-gray-500">
-          Elliot Smith
+          {{ product.artist }}
         </h5>
-        <p class="text-1xl pb-4">
-          This is a product test buy this beautiful vinyl!
-        </p>
+        <p class="text-1xl pb-4">{{ product.bio }}</p>
       </section>
-
       <button
-        class="w-full bg-sky-950 p-3 rounded-xl bg-gradient-to-br shadow transform hover:bg-sky-700 text-white grid grid-cols-[24px,auto,24px]">
+        class="w-full bg-sky-950 p-3 rounded-xl bg-gradient-to-br shadow transform hover:bg-sky-700 text-white grid grid-cols-[24px,auto,24px]"
+      >
         <lucide-icon
           name="shopping-cart"
-          class="my-icon text-white flex justify-center align-middle" />
+          class="my-icon text-white flex justify-center align-middle"
+        ></lucide-icon>
         Add to cart
       </button>
     </article>
+    <!-- End of product loop -->
   </section>
 </section>
