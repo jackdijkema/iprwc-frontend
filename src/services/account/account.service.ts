@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, tap } from 'rxjs';
+import { tap } from 'rxjs';
 import { Router } from '@angular/router';
-import { AuthService } from './auth.service';
+import { AuthService } from '../auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ApiService {
+export class AccountService {
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -41,10 +41,5 @@ export class ApiService {
         }
       }),
     );
-  }
-
-  getProducts(): Observable<any> {
-    const apiUrl = 'http://localhost:8080/api/v1/products';
-    return this.http.get(apiUrl);
   }
 }

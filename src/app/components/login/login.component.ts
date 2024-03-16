@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { LucideAngularModule } from 'lucide-angular';
 import { FormsModule } from '@angular/forms';
-import { ApiService } from '../../../services/api.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { AccountService } from '../../../services/account/account.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   constructor(
-    private apiService: ApiService,
+    private accountService: AccountService,
     private toastr: ToastrService,
     private router: Router,
   ) {}
@@ -29,7 +29,7 @@ export class LoginComponent {
       password: this.password,
     };
 
-    this.apiService.PostLogin(payload).subscribe({
+    this.accountService.PostLogin(payload).subscribe({
       next: (response) => {
         if (response) {
           this.toastr.success('Login success!', 'Success!');

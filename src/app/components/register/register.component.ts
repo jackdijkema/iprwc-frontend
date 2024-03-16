@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { ApiService } from '../../../services/api.service';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { AccountService } from '../../../services/account/account.service';
 
 @Component({
   selector: 'app-register',
@@ -19,7 +19,7 @@ export class RegisterComponent {
   password: string = '';
 
   constructor(
-    private apiService: ApiService,
+    private accountService: AccountService,
     private router: Router,
     private toastr: ToastrService,
   ) {}
@@ -32,7 +32,7 @@ export class RegisterComponent {
       password: this.password,
     };
 
-    this.apiService.PostRegister(payload).subscribe({
+    this.accountService.PostRegister(payload).subscribe({
       next: (response) => {
         if (response) {
           this.toastr.success('Register success!', 'Success!');

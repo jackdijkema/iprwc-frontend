@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LucideAngularModule } from 'lucide-angular';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { CommonModule } from '@angular/common';
-import { ApiService } from '../../../services/api.service';
+import { ProductService } from '../../../services/product/product.service';
 import { map } from 'rxjs';
 
 @Component({
@@ -13,16 +13,14 @@ import { map } from 'rxjs';
   styleUrl: './product-gallery.component.scss',
 })
 export class ProductGalleryComponent implements OnInit {
-  constructor(private apiService: ApiService) {}
+  constructor(private productService: ProductService) {}
 
   products: any[] = [];
 
   ngOnInit(): void {
-    this.apiService
+    this.productService
       .getProducts()
-      .pipe(
-        map((data) => data), // Transform the data to extract products array
-      )
+      .pipe(map((data) => data))
       .subscribe({
         next: (products: []) => {
           this.products = products;
