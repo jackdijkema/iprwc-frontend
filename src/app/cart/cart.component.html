@@ -27,9 +27,11 @@
             {{ product[0].artist }}
           </p>
           <div class="flex items-center justify-between w-full">
-            <p class="text-base font-black leading-none text-gray-800">
-              {{ product[0].name }}
-            </p>
+            <a routerLink="/product/{{ product[0].id }}">
+              <p class="text-base font-black leading-none text-gray-800">
+                {{ product[0].name }}
+              </p>
+            </a>
             <select
               aria-label="Select quantity"
               class="py-2 px-1 border border-gray-200 mr-6 focus:outline-none"
@@ -80,7 +82,10 @@
           Total: ${{ getTotalPrice() }}</span
         >
       </div>
-      <button class="bg-sky-950 text-white py-2 px-4 rounded w-full">
+      <button
+        class="bg-sky-950 text-white py-2 px-4 rounded w-full"
+        (click)="checkout()"
+      >
         Checkout
       </button>
     </div>
