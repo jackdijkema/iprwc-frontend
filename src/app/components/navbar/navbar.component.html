@@ -38,7 +38,9 @@
       >
         <lucide-icon name="log-in" class="my-icon"></lucide-icon>
       </a>
-
+      <span *ngIf="loggedIn()" class="capitalize"
+        >Welcome {{ customer?.firstname }}</span
+      >
       <button *ngIf="loggedIn()" (click)="logout()">Sign out</button>
     </div>
     <div class="relative flex items-center justify-center md:hidden">
