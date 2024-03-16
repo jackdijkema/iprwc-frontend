@@ -4,6 +4,8 @@ import { ProductService } from '../../../../services/product/product.service';
 import { Product } from '../../../../model/product.model';
 import { NavbarComponent } from '../../navbar/navbar.component';
 import { CommonModule } from '@angular/common';
+import { CartService } from '../../../../services/cart/cart.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-product-detail',
@@ -19,7 +21,14 @@ export class ProductDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
+    private cartService: CartService,
+    private toastr: ToastrService,
   ) {}
+
+  addToCart(product: Product): void {
+    this.cartService.addToCart(product);
+    this.toastr.success('Added to cart.', 'Success');
+  }
 
   ngOnInit() {
     const productId = this.route.snapshot.params['uuid'];

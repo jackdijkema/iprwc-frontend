@@ -135,7 +135,6 @@
         <div
           class="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5"
         >
-    
           <div class="flex ml-6 items-center">
             <span class="mr-3">Amount</span>
             <div class="relative">
@@ -171,10 +170,10 @@
             >${{ product.price }}</span
           >
           <button
-            class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded"
+            class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded" (click)="addToCart(product)"
           >
             Add to cart
-        </button>
+          </button>
         </div>
       </div>
     </div>

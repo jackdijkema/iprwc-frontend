@@ -36,7 +36,7 @@ export class RegisterComponent {
       next: (response) => {
         if (response) {
           this.toastr.success('Register success!', 'Success!');
-          this.router.navigate(['/customerpanel']);
+          this.router.navigate(['/login']);
         }
       },
       error: (error) => {
