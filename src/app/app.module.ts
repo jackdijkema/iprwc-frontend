@@ -9,6 +9,7 @@ import {
   LucideAngularModule,
   ShoppingCart,
 } from 'lucide-angular';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [],
@@ -23,6 +24,7 @@ import {
     }),
     CommonModule,
     HttpClientModule,
+    RouterModule,
     HttpClientXsrfModule.withOptions({
       cookieName: 'XSRF-TOKEN',
       headerName: 'X-XSRF-TOKEN',

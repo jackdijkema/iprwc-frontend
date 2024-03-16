@@ -10,9 +10,11 @@
         alt="Product Image"
       />
       <section class="p-2">
-        <h2 class="mb-2 text-4xl font-bold tracking-tight text-gray-900">
-          {{ product.name }}
-        </h2>
+        <a routerLink="/product/{{ product.id }}">
+          <h2 class="mb-2 text-4xl font-bold tracking-tight text-gray-900">
+            {{ product.name }}
+          </h2>
+        </a>
         <div class="flex justify-start">
           <h5
             class="border-sky-950 rounded-xl text-2xl font-bold cursor-default"
@@ -25,15 +27,14 @@
         </h5>
         <p class="text-1xl pb-4">{{ product.bio }}</p>
       </section>
-      <button
-        class="w-full bg-sky-950 p-3 rounded-xl bg-gradient-to-br shadow transform hover:bg-sky-700 text-white grid grid-cols-[24px,auto,24px]"
-      >
-        <lucide-icon
-          name="shopping-cart"
-          class="my-icon text-white flex justify-center align-middle"
-        ></lucide-icon>
-        Add to cart
-      </button>
+      <section style="display: flex; justify-content: space-between">
+        <button
+          class="w-12 h-12 bg-sky-950 rounded-full bg-gradient-to-br shadow transform hover:bg-sky-700 text-white flex items-center justify-center"
+          style="margin-left: auto"
+        >
+          <lucide-icon name="shopping-cart" class="text-white"></lucide-icon>
+        </button>
+      </section>
     </article>
     <!-- End of product loop -->
   </section>
