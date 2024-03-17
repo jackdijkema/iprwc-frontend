@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
 import { Product } from '../../model/product.model';
 
@@ -12,11 +12,25 @@ export class ProductService {
   constructor(private http: HttpClient) {}
 
   getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.apiUrl);
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*', // Change '*' to your desired origin
+    });
+
+    // Making the HTTP request with headers
+    return this.http.get<Product[]>(this.apiUrl, { headers: headers });
   }
 
   getProductById(id: string): Observable<Product> {
     const apiUrl = `${this.apiUrl}/${id}`;
-    return this.http.get<Product>(apiUrl);
+
+    // Setting CORS headers
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*', // Change '*' to your desired origin
+    });
+
+    // Making the HTTP request with headers
+    return this.http.get<Product>(apiUrl, { headers: headers });
   }
 }

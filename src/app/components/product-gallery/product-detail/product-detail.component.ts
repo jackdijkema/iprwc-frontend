@@ -27,7 +27,7 @@ export class ProductDetailComponent implements OnInit {
 
   addToCart(product: Product): void {
     this.cartService.addToCart(product);
-    this.toastr.success('Added to cart.', 'Success');
+    this.toastr.success('Added to cart.', 'Succes');
   }
 
   ngOnInit() {

@@ -1,9 +1,7 @@
-import { Order } from './order.model';
-
 export interface User {
+  role: string;
   id: string;
   firstname: string;
   lastname: string;
   email: string;
-  orders: Order[];
 }

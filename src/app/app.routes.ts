@@ -8,6 +8,7 @@ import { AuthGuard } from '../services/guard/user.guard';
 import { LoginGuard } from '../services/guard/login.guard';
 import { ProductDetailComponent } from './components/product-gallery/product-detail/product-detail.component';
 import { CartComponent } from './cart/cart.component';
+import { AdminGuard } from '../services/guard/admin.guard';
 
 export const routes: Routes = [
   {
@@ -22,6 +23,7 @@ export const routes: Routes = [
   {
     path: 'admin',
     component: AdminpanelComponent,
+    canActivate: [AdminGuard],
   },
   {
     path: 'login',

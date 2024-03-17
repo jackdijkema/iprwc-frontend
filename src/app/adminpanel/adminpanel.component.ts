@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavbarComponent } from '../components/navbar/navbar.component';
-import { OrderviewComponent } from '../components/orderview/orderview.component';
+import { OrderviewComponent } from '../customerpanel/orderview/orderview.component';
 
 @Component({
   selector: 'app-adminpanel',
@@ -9,4 +9,13 @@ import { OrderviewComponent } from '../components/orderview/orderview.component'
   styleUrl: './adminpanel.component.scss',
   imports: [NavbarComponent, OrderviewComponent],
 })
-export class AdminpanelComponent {}
+export class AdminpanelComponent {
+
+
+  
+
+
+
+
+
+}

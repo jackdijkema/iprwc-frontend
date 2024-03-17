@@ -14,11 +14,14 @@ export class AccountService {
     private router: Router,
     private authService: AuthService,
   ) {
-    this.fetchUserData();
+    if (authService.isAuthenticated()) {
+      this.fetchUserData();
+    }
   }
 
   private userDataSubject: BehaviorSubject<User | null> =
     new BehaviorSubject<User | null>(null);
+  
   public userData$ = this.userDataSubject.asObservable();
 
   PostLogin(payload: { email: string; password: string }) {
