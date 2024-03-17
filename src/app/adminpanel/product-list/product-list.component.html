@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en" class="antialiased">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Products</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link
+      href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="bg-gray-100 text-gray-900 tracking-wider leading-normal">
+    <div class="container mx-auto px-4 py-8">
+      <h1 class="text-2xl font-bold mb-4">Products</h1>
+      <div
+        class="overflow-x-auto bg-white rounded-lg shadow overflow-y-auto relative"
+      >
+        <table
+          class="border-collapse table-auto w-full whitespace-no-wrap bg-white table-striped relative"
+        >
+          <thead>
+            <tr class="text-left">
+              <th class="py-2 px-3 sticky top-0 bg-gray-200">ID</th>
+              <th class="py-2 px-3 sticky top-0 bg-gray-200">Name</th>
+              <th class="py-2 px-3 sticky top-0 bg-gray-200">Artist</th>
+              <th class="py-2 px-3 sticky top-0 bg-gray-200">Bio</th>
+              <th class="py-2 px-3 sticky top-0 bg-gray-200">Price</th>
+              <th class="py-2 px-3 sticky top-0 bg-gray-200">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of products">
+              <td class="border-t-2 border-gray-200 px-4 py-4">
+                {{ product.id }}
+              </td>
+              <td class="border-t-2 border-gray-200 px-4 py-4">
+                {{ product.name }}
+              </td>
+              <td class="border-t-2 border-gray-200 px-4 py-4">
+                {{ product.artist }}
+              </td>
+              <td class="border-t-2 border-gray-200 px-4 py-4">
+                {{ product.bio }}
+              </td>
+              <td class="border-t-2 border-gray-200 px-4 py-4">
+                {{ product.price }}
+              </td>
+              <td class="border-t-2 border-gray-200 px-4 py-4">
+                <button
+                  class="px-4 py-2 bg-red-500 text-white rounded-md"
+                  (click)="deleteById(product.id)"
+                >
+                  Delete
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

@@ -46,11 +46,10 @@ export class CartComponent implements OnInit {
     this.accountService.userData$.subscribe((userData: User | null) => {
       this.customer = userData;
     });
-
-    if (this.token) {
-      const claims = this.authService.parseToken(this.token);
+    const claims = (this.authService.parseToken = (data) => {
       console.log(claims);
-    }
+      console.log(data);
+    });
   }
 
   getTotalPrice(): number {
