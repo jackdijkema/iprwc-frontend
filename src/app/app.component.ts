@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, isDevMode } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { AppModule } from './app.module';
@@ -10,6 +10,14 @@ import { AppModule } from './app.module';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {
-  title = 'iprwc';
+export class AppComponent implements OnInit {
+  title = 'VinylRevordShop';
+
+  ngOnInit() {
+    if (isDevMode()) {
+      console.log('Development!');
+    } else {
+      console.log('Production!');
+    }
+  }
 }

@@ -4,13 +4,14 @@ import { User } from '../../model/user';
 import { NavbarComponent } from '../components/navbar/navbar.component';
 import { OrderviewComponent } from './orderview/orderview.component';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-customerpanel',
   standalone: true,
   templateUrl: './customerpanel.component.html',
   styleUrls: ['./customerpanel.component.scss'],
-  imports: [NavbarComponent, OrderviewComponent, CommonModule],
+  imports: [NavbarComponent, OrderviewComponent, CommonModule, RouterLink],
 })
 export class CustomerpanelComponent implements OnInit {
   customer: User | null = null;

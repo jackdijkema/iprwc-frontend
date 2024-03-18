@@ -7,17 +7,18 @@ import { AccountService } from '../../services/account/account.service';
 import { User } from '../../model/user';
 import { NavbarComponent } from '../components/navbar/navbar.component';
 import { CommonModule } from '@angular/common';
-import { Router, RouterModule } from '@angular/router';
+import { Router, RouterLink, RouterModule } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from '../../services/auth.service';
 import { OrderService } from '../../services/order/order.service';
+import { environment } from '../../environment/environment';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss'],
-  imports: [NavbarComponent, CommonModule, RouterModule],
+  imports: [NavbarComponent, CommonModule, RouterModule, RouterLink],
 })
 export class CartComponent implements OnInit {
   cartItems: Map<Product, number> = new Map<Product, number>();
@@ -34,6 +35,8 @@ export class CartComponent implements OnInit {
     private orderService: OrderService,
     private router: Router,
   ) {}
+
+  BASE_URL = environment.baseUrl;
 
   getCartItems() {
     return Array.from(this.cartItems.keys());
@@ -72,7 +75,7 @@ export class CartComponent implements OnInit {
     this.cartService.removeItem(product);
   }
 
-  apiUrl = 'http://localhost:8080/api/v1/orders';
+  apiUrl = `${this.BASE_URL}:8080/api/v1/orders`;
 
   checkout(): void {
     this.orderItems = [];

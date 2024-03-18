@@ -3,7 +3,7 @@ import { NavbarComponent } from '../navbar/navbar.component';
 import { LucideAngularModule } from 'lucide-angular';
 import { FormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AccountService } from '../../../services/account/account.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { AccountService } from '../../../services/account/account.service';
   standalone: true,
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
-  imports: [NavbarComponent, LucideAngularModule, FormsModule],
+  imports: [NavbarComponent, LucideAngularModule, FormsModule, RouterLink],
 })
 export class LoginComponent {
   constructor(

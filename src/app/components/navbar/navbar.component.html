@@ -5,7 +5,7 @@
     class="mx-auto flex max-w-6xl gap-8 px-6 transition-all duration-200 ease-in-out lg:px-12 py-4 text-white"
   >
     <div class="relative flex items-center">
-      <a href="/" class="text-bold flex">
+      <a routerLink="/" class="text-bold flex">
         <lucide-icon
           name="disc-3"
           class="text-white hover:animate-spin"
@@ -15,7 +15,7 @@
     </div>
     <ul class="hidden items-center justify-center gap-6 md:flex">
       <li class="pt-1.5 font-dm text-sm font-medium text-white">
-        <a href="/">Products</a>
+        <a routerLink="/">Products</a>
       </li>
     </ul>
     <ul class="hidden items-center justify-center gap-6 md:flex">
@@ -23,16 +23,16 @@
         class="pt-1.5 font-dm text-sm font-medium text-white"
         *ngIf="loggedIn()"
       >
-        <a href="/dashboard">My orders</a>
+        <a routerLink="/dashboard">My orders</a>
       </li>
     </ul>
     <div class="flex-grow"></div>
     <div class="hidden items-center justify-center gap-6 md:flex">
-      <a href="/cart" class="font-dm text-sm font-medium text-white">
+      <a routerLink="/cart" class="font-dm text-sm font-medium text-white">
         <lucide-icon name="shopping-cart" class="my-icon"></lucide-icon>
       </a>
       <a
-        href="/login"
+        routerLink="/login"
         class="font-dm text-sm font-medium text-white"
         *ngIf="!loggedIn()"
       >

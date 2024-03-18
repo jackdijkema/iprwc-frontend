@@ -4,11 +4,12 @@ import { Product } from '../../../model/product.model';
 import { map } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.scss',
 })

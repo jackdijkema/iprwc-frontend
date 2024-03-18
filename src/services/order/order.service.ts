@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AuthService } from '../auth.service';
+import { environment } from '../../environment/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,9 @@ export class OrderService {
     private authService: AuthService,
   ) {}
 
-  apiUrl = 'http://localhost:8080/api/v1/orders';
+  BASE_URL = environment.baseUrl;
+
+  apiUrl = `${this.BASE_URL}:8080/api/v1/orders`;
 
   createOrder(payload: string): Observable<any> {
     const headers = new HttpHeaders({

@@ -4,6 +4,7 @@ import { BehaviorSubject, map, tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { User } from '../../model/user';
+import { environment } from '../../environment/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -19,13 +20,15 @@ export class AccountService {
     }
   }
 
+  BASE_URL = environment.baseUrl;
+
   private userDataSubject: BehaviorSubject<User | null> =
     new BehaviorSubject<User | null>(null);
-  
+
   public userData$ = this.userDataSubject.asObservable();
 
   PostLogin(payload: { email: string; password: string }) {
-    const apiUrl = 'http://localhost:8080/api/v1/auth/authenticate';
+    const apiUrl = `${this.BASE_URL}:8080/api/v1/auth/authenticate`;
 
     return this.http.post(apiUrl, payload).pipe(
       tap((response: any) => {
@@ -42,7 +45,7 @@ export class AccountService {
     email: string;
     password: string;
   }) {
-    const apiUrl = 'http://localhost:8080/api/v1/auth/register';
+    const apiUrl = `${this.BASE_URL}:8080/api/v1/auth/register`;
 
     return this.http.post(apiUrl, payload).pipe(
       tap((response: any) => {
@@ -58,7 +61,8 @@ export class AccountService {
       Authorization: `Bearer ${this.authService.getToken()}`,
     };
 
-    const apiUrl = 'http://localhost:8080/api/v1/users/customer';
+    const apiUrl = `${this.BASE_URL}:8080/api/v1/users/customer`;
+
     this.http
       .get<User>(apiUrl, { headers })
       .pipe(

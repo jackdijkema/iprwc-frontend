@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { AccountService } from '../../../services/account/account.service';
@@ -10,7 +10,7 @@ import { AccountService } from '../../../services/account/account.service';
   standalone: true,
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
-  imports: [NavbarComponent, FormsModule],
+  imports: [NavbarComponent, FormsModule, RouterLink],
 })
 export class RegisterComponent {
   firstname: string = '';

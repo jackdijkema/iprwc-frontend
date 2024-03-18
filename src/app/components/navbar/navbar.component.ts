@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LucideAngularModule } from 'lucide-angular';
 import { AuthService } from '../../../services/auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AccountService } from '../../../services/account/account.service';
 import { User } from '../../../model/user';
@@ -9,7 +9,7 @@ import { User } from '../../../model/user';
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [LucideAngularModule, CommonModule],
+  imports: [LucideAngularModule, CommonModule, RouterLink],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
 })

@@ -3,12 +3,15 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
 import { Product } from '../../model/product.model';
 import { AuthService } from '../auth.service';
+import { environment } from '../../environment/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
-  private apiUrl = 'http://localhost:8080/api/v1/products';
+  BASE_URL = environment.baseUrl;
+
+  private apiUrl = `${this.BASE_URL}:8080/api/v1/products`;
 
   constructor(
     private http: HttpClient,
@@ -18,23 +21,20 @@ export class ProductService {
   getProducts(): Observable<Product[]> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*', // Change '*' to your desired origin
+      'Access-Control-Allow-Origin': '*',
     });
 
-    // Making the HTTP request with headers
     return this.http.get<Product[]>(this.apiUrl, { headers: headers });
   }
 
   getProductById(id: string): Observable<Product> {
     const apiUrl = `${this.apiUrl}/${id}`;
 
-    // Setting CORS headers
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*', // Change '*' to your desired origin
+      'Access-Control-Allow-Origin': '*',
     });
 
-    // Making the HTTP request with headers
     return this.http.get<Product>(apiUrl, { headers: headers });
   }
 
@@ -49,7 +49,7 @@ export class ProductService {
   }
 
   deleteProductById(productId: string): Observable<any> {
-    const apiUrl = 'http://localhost:8080/api/v1/products/' + productId;
+    const apiUrl = `${this.BASE_URL}:8080/api/v1/products/${productId}`;
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',

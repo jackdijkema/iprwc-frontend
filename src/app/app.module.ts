@@ -13,12 +13,13 @@ import {
   LucideAngularModule,
   ShoppingCart,
 } from 'lucide-angular';
-import { RouterModule } from '@angular/router';
+import { RouterLink, RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [],
-  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
+  providers: [],
   imports: [
+    RouterLink,
     ToastrModule.forRoot({
       closeButton: true, // Show close button
       progressBar: true, // Show progress bar

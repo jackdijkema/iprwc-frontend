@@ -1,5 +1,5 @@
 <section class="flex justify-center p-5">
-  <section class="grid grid-cols-3 gap-4 p-8">
+  <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-4 p-8">
     <article
       *ngFor="let product of products"
       class="rounded-lg max-w-sm bg-white border border-gray-200 shadow p-3"
@@ -27,15 +27,14 @@
         </h5>
         <p class="text-1xl pb-4">{{ product.bio }}</p>
       </section>
-      <section style="display: flex; justify-content: space-between">
+      <section class="flex justify-end">
         <button
           class="w-12 h-12 bg-sky-950 rounded-full bg-gradient-to-br shadow transform hover:bg-sky-700 text-white flex items-center justify-center"
-          style="margin-left: auto" (click)="addToCart(product)"
+          (click)="addToCart(product)"
         >
           <lucide-icon name="shopping-cart" class="text-white"></lucide-icon>
         </button>
       </section>
     </article>
-    <!-- End of product loop -->
   </section>
 </section>

@@ -5,13 +5,15 @@ import { ToastrService } from 'ngx-toastr';
 import { ProductService } from '../../../services/product/product.service';
 import { Product } from '../../../model/product.model';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
+import { RouterLink } from '@angular/router';
+import { environment } from '../../../environment/environment';
 
 @Component({
   selector: 'app-create-product',
   standalone: true,
   templateUrl: './create-product.component.html',
   styleUrl: './create-product.component.scss',
-  imports: [NavbarComponent, FormsModule, CommonModule],
+  imports: [NavbarComponent, FormsModule, CommonModule, RouterLink],
 })
 export class CreateProductComponent {
   name: string = '';
@@ -21,7 +23,8 @@ export class CreateProductComponent {
   bio: string = '';
 
   products: Product[] = [];
-
+  BASE_URL = environment.baseUrl;
+  
   constructor(
     private productService: ProductService,
     private toastr: ToastrService,
