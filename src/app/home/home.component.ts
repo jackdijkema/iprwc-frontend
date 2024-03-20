@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { NavbarComponent } from '../components/navbar/navbar.component';
-import { ProductGalleryComponent } from '../components/product-gallery/product-gallery.component';
-import { RouterLink } from '@angular/router';
+import { Component } from '@angular/core'
+import { NavbarComponent } from '../components/navbar/navbar.component'
+import { ProductGalleryComponent } from './product-gallery/product-gallery.component'
+import { RouterLink } from '@angular/router'
 
 @Component({
   selector: 'app-home',

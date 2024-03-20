@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
-import { NavbarComponent } from '../navbar/navbar.component';
-import { Router, RouterLink } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
-import { AccountService } from '../../../services/account/account.service';
+import { Component } from '@angular/core'
+import { NavbarComponent } from '../components/navbar/navbar.component'
+import { Router, RouterLink } from '@angular/router'
+import { FormsModule } from '@angular/forms'
+import { ToastrService } from 'ngx-toastr'
+import { AccountService } from '../../services/account/account.service'
 
 @Component({
   selector: 'app-register',
@@ -13,10 +13,10 @@ import { AccountService } from '../../../services/account/account.service';
   imports: [NavbarComponent, FormsModule, RouterLink],
 })
 export class RegisterComponent {
-  firstname: string = '';
-  familyname: string = '';
-  email: string = '';
-  password: string = '';
+  firstname: string = ''
+  familyname: string = ''
+  email: string = ''
+  password: string = ''
 
   constructor(
     private accountService: AccountService,
@@ -30,19 +30,19 @@ export class RegisterComponent {
       lastname: this.familyname,
       email: this.email,
       password: this.password,
-    };
+    }
 
     this.accountService.PostRegister(payload).subscribe({
       next: (response) => {
         if (response) {
-          this.toastr.success('Register success!', 'Success!');
-          this.router.navigate(['/login']);
+          this.toastr.success('Register success!', 'Success!')
+          this.router.navigate(['/login'])
         }
       },
       error: (error) => {
-        console.error('Registration failed:', error);
-        this.toastr.error('Register Error!', 'Error!');
+        console.error('Registration failed:', error)
+        this.toastr.error('Register Error!', 'Error!')
       },
-    });
+    })
   }
 }

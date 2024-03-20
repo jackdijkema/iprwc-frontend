@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
 import { Product } from '../../model/product.model';
 import { AuthService } from '../auth.service';
-import { environment } from '../../environment/environment';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +11,7 @@ import { environment } from '../../environment/environment';
 export class ProductService {
   BASE_URL = environment.baseUrl;
 
-  private apiUrl = `${this.BASE_URL}:8080/api/v1/products`;
+  private apiUrl = `${this.BASE_URL}/api/v1/products`;
 
   constructor(
     private http: HttpClient,
@@ -49,7 +49,7 @@ export class ProductService {
   }
 
   deleteProductById(productId: string): Observable<any> {
-    const apiUrl = `${this.BASE_URL}:8080/api/v1/products/${productId}`;
+    const apiUrl = `${this.BASE_URL}/api/v1/products/${productId}`;
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',

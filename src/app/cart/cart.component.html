@@ -7,55 +7,54 @@
         <h2 class="font-semibold text-2xl">{{ getTotalItems() }} Items</h2>
       </div>
       <div
-        *ngFor="let product of cartItems.entries()"
+        *ngFor="let product of cartItems"
         class="md:flex items-stretch py-8 md:py-10 lg:py-8 border-t border-gray-50"
       >
         <div class="md:w-4/12 2xl:w-1/4 w-full">
           <img
-            [src]="product[0].photoUrl"
-            [alt]="product[0].name"
+            [src]="product.product.photoUrl"
+            [alt]="product.product.name"
             class="h-full object-center object-cover md:block hidden"
           />
           <img
-            [src]="product[0].photoUrl"
-            [alt]="product[0].name"
+            [src]="product.product.photoUrl"
+            [alt]="product.product.name"
             class="md:hidden w-full h-full object-center object-cover"
           />
         </div>
         <div class="md:pl-3 md:w-8/12 2xl:w-3/4 flex flex-col justify-center">
           <p class="text-xs leading-3 text-gray-800 md:pt-0 pt-4">
-            {{ product[0].artist }}
+            {{ product.product.artist }}
           </p>
           <div class="flex items-center justify-between w-full">
-            <a routerLink="/product/{{ product[0].id }}">
+            <a routerLink="/product/{{ product.product.id }}">
               <p class="text-base font-black leading-none text-gray-800">
-                {{ product[0].name }}
+                {{ product.product.name }}
               </p>
             </a>
             <select
               aria-label="Select quantity"
               class="py-2 px-1 border border-gray-200 mr-6 focus:outline-none"
             >
-              <option [value]="product[1]">{{ product[1] }}</option>
+              <option [value]="product.product">{{ product.quantity }}</option>
             </select>
           </div>
           <p class="text-xs leading-3 text-gray-600 pt-2">
-            {{ product[0].bio }}
+            {{ product.product.bio }}
           </p>
           <p class="text-xs leading-3 text-gray-600 py-4">
-            Price: ${{ product[0].price }}
+            Price: ${{ product.product.price }}
           </p>
           <div class="flex items-center justify-between pt-5">
             <div class="flex items-center">
               <button
                 class="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer"
-                (click)="removeItem(product[0])"
-              >
+                (click)="removeItem(product.product)">
                 Remove
               </button>
             </div>
             <p class="text-base font-black leading-none text-gray-800">
-              ${{ product[0].price }}
+              ${{ product.product.price }}
             </p>
           </div>
         </div>
@@ -87,8 +86,7 @@
       </div>
       <button
         class="bg-sky-950 text-white py-2 px-4 rounded w-full"
-        (click)="checkout()"
-      >
+        (click)="checkout()">
         Checkout
       </button>
     </div>

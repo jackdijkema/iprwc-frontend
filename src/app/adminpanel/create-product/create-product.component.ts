@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { ToastrService } from 'ngx-toastr';
-import { ProductService } from '../../../services/product/product.service';
-import { Product } from '../../../model/product.model';
-import { NavbarComponent } from '../../components/navbar/navbar.component';
-import { RouterLink } from '@angular/router';
-import { environment } from '../../../environment/environment';
+import { Component } from '@angular/core'
+import { FormsModule } from '@angular/forms'
+import { CommonModule } from '@angular/common'
+import { ToastrService } from 'ngx-toastr'
+import { ProductService } from '../../../services/product/product.service'
+import { Product } from '../../../model/product.model'
+import { NavbarComponent } from '../../components/navbar/navbar.component'
+import { RouterLink } from '@angular/router'
+import { environment } from '../../../environments/environment'
 
 @Component({
   selector: 'app-create-product',
@@ -16,22 +16,22 @@ import { environment } from '../../../environment/environment';
   imports: [NavbarComponent, FormsModule, CommonModule, RouterLink],
 })
 export class CreateProductComponent {
-  name: string = '';
-  artist: string = '';
-  price: number = 0;
-  productUrl: string = '';
-  bio: string = '';
+  name: string = ''
+  artist: string = ''
+  price: number = 0
+  productUrl: string = ''
+  bio: string = ''
 
-  products: Product[] = [];
-  BASE_URL = environment.baseUrl;
-  
+  products: Product[] = []
+  BASE_URL = environment.baseUrl
+
   constructor(
     private productService: ProductService,
     private toastr: ToastrService,
   ) {}
 
   submitForm(): void {
-    products: [] = [];
+    products: [] = []
 
     const payload = {
       name: this.name,
@@ -40,21 +40,21 @@ export class CreateProductComponent {
       bio: this.bio,
       photoUrl: this.productUrl,
       id: '',
-    };
+    }
 
-    this.products.push(payload);
+    this.products.push(payload)
 
-    console.log(this.products);
+    console.log(this.products)
     this.productService.addProducts(this.products).subscribe({
       next: (response: any) => {
-        console.log('Products successfully added:', response);
-        this.toastr.success('Product added', 'Success');
-        return;
+        console.log('Products successfully added:', response)
+        this.toastr.success('Product added', 'Success')
+        return
       },
       error: (error: any) => {
-        console.error('There was a problem adding products:', error);
-        this.toastr.error('Product add failed.', 'Error');
+        console.error('There was a problem adding products:', error)
+        this.toastr.error('Product add failed.', 'Error')
       },
-    });
+    })
   }
 }

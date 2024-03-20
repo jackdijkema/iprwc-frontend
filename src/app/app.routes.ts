@@ -1,12 +1,12 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AdminpanelComponent } from './adminpanel/adminpanel.component';
-import { LoginComponent } from './components/login/login.component';
+import { LoginComponent } from './login/login.component';
 import { CustomerpanelComponent } from './customerpanel/customerpanel.component';
-import { RegisterComponent } from './components/register/register.component';
+import { RegisterComponent } from './register/register.component';
 import { AuthGuard } from '../services/guard/user.guard';
 import { LoginGuard } from '../services/guard/login.guard';
-import { ProductDetailComponent } from './components/product-gallery/product-detail/product-detail.component';
+import { ProductDetailComponent } from './home/product-gallery/product-detail/product-detail.component';
 import { CartComponent } from './cart/cart.component';
 
 export const routes: Routes = [
@@ -23,6 +23,7 @@ export const routes: Routes = [
     path: 'admin',
     component: AdminpanelComponent,
     canActivate: [AuthGuard],
+
   },
   {
     path: 'login',

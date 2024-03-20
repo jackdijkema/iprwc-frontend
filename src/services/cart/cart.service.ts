@@ -1,70 +1,65 @@
-import { Injectable } from '@angular/core';
-import { Product } from '../../model/product.model';
+import { Injectable } from '@angular/core'
+import { Product } from '../../model/product.model'
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
-  cartItems: Map<Product, number> = new Map();
+  cartItems: { product: Product; quantity: number }[] = []
 
   constructor() {
-    const storedCartItems = localStorage.getItem('cartItems');
+    const storedCartItems = localStorage.getItem('cartItems')
     if (storedCartItems) {
-      this.cartItems = new Map(JSON.parse(storedCartItems));
+      this.cartItems = JSON.parse(storedCartItems)
     }
   }
 
   addToCart(product: Product): void {
-    let found = false;
+    let found = false
 
-    this.cartItems.forEach((quantity, existingProduct) => {
-      if (existingProduct.id === product.id) {
-        this.cartItems.set(existingProduct, quantity + 1);
-        found = true;
+    this.cartItems.forEach((item) => {
+      if (item.product.id === product.id) {
+        item.quantity++
+        found = true
       }
-    });
+    })
 
     if (!found) {
-      this.cartItems.set(product, 1);
+      this.cartItems.push({ product, quantity: 1 })
     }
 
-    this.saveCartItemsToLocalStorage();
+    this.saveCartItemsToLocalStorage()
   }
 
   removeItem(product: Product): void {
-    if (this.cartItems.has(product)) {
-      const quantity: number | undefined = this.cartItems.get(product);
-      if (quantity && quantity > 1) {
-        this.cartItems.set(product, quantity - 1);
+    const index = this.cartItems.findIndex(
+      (item) => item.product.id === product.id,
+    )
+    if (index !== -1) {
+      if (this.cartItems[index].quantity > 1) {
+        this.cartItems[index].quantity--
       } else {
-        this.cartItems.delete(product);
+        this.cartItems.splice(index, 1)
       }
-      this.saveCartItemsToLocalStorage();
+      this.saveCartItemsToLocalStorage()
     }
   }
 
   emptyCart(): void {
-    this.cartItems.clear();
-    localStorage.removeItem('cartItems');
+    this.cartItems = []
+    localStorage.removeItem('cartItems')
   }
 
   private saveCartItemsToLocalStorage(): void {
-    localStorage.setItem(
-      'cartItems',
-      JSON.stringify(Array.from(this.cartItems.entries())),
-    );
+    localStorage.setItem('cartItems', JSON.stringify(this.cartItems))
   }
 
-  getCartItems(): Map<Product, number> {
-    console.log(this.cartItems);
-    return this.cartItems;
+  getCartItems(): { product: Product; quantity: number }[] {
+    console.log(this.cartItems)
+    return this.cartItems
   }
 
   getTotalQuantity(): number {
-    let totalQuantity = 0;
-    this.cartItems.forEach((quantity) => {
-      totalQuantity += quantity;
-    });
-    return totalQuantity;
+    return this.cartItems.reduce((total, item) => total + item.quantity, 0)
   }
 }

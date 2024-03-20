@@ -1,64 +1,36 @@
-<header
-  class="sticky inset-0 z-50 border-b backdrop-blur-lg bg-gray-800 text-white border-slate-600 font-sans"
->
-  <nav
-    class="mx-auto flex max-w-6xl gap-8 px-6 transition-all duration-200 ease-in-out lg:px-12 py-4 text-white"
-  >
+<header class="sticky inset-0 z-50 border-b backdrop-blur-lg bg-gray-800 text-white border-slate-600 font-sans">
+  <nav class="mx-auto flex max-w-6xl gap-8 px-6 transition-all duration-200 ease-in-out lg:px-12 py-4 text-white">
     <div class="relative flex items-center">
       <a routerLink="/" class="text-bold flex">
-        <lucide-icon
-          name="disc-3"
-          class="text-white hover:animate-spin"
-        ></lucide-icon>
-        <span class="text-bold text-2xl">VinylRecordShop</span></a
-      >
+        <lucide-icon name="disc-3" class="text-white hover:animate-spin"></lucide-icon>
+        <span class="text-bold text-2xl">VinylRecordShop</span>
+      </a>
     </div>
+
+    <!-- Loop through menuItems -->d
     <ul class="hidden items-center justify-center gap-6 md:flex">
-      <li class="pt-1.5 font-dm text-sm font-medium text-white">
-        <a routerLink="/">Products</a>
+      <li *ngFor="let menuItem of menuItems" class="pt-1.5 font-dm text-sm font-medium text-white">
+        <a [routerLink]="menuItem.route">{{ menuItem.label }}</a>
       </li>
     </ul>
-    <ul class="hidden items-center justify-center gap-6 md:flex">
-      <li
-        class="pt-1.5 font-dm text-sm font-medium text-white"
-        *ngIf="loggedIn()"
-      >
-        <a routerLink="/dashboard">My orders</a>
-      </li>
-    </ul>
+
     <div class="flex-grow"></div>
+
     <div class="hidden items-center justify-center gap-6 md:flex">
       <a routerLink="/cart" class="font-dm text-sm font-medium text-white">
         <lucide-icon name="shopping-cart" class="my-icon"></lucide-icon>
       </a>
-      <a
-        routerLink="/login"
-        class="font-dm text-sm font-medium text-white"
-        *ngIf="!loggedIn()"
-      >
+      <a routerLink="/login" class="font-dm text-sm font-medium text-white" *ngIf="!isLoggedIn()">
         <lucide-icon name="log-in" class="my-icon"></lucide-icon>
       </a>
-      <span *ngIf="loggedIn()" class="capitalize"
-        >Welcome {{ customer?.firstname }}</span
-      >
-      <button *ngIf="loggedIn()" (click)="logout()">Sign out</button>
+      <span *ngIf="isLoggedIn()" class="capitalize">Welcome {{ customer?.firstname }}</span>
+      <button *ngIf="isLoggedIn()" (click)="logout()">Sign out</button>
     </div>
+
     <div class="relative flex items-center justify-center md:hidden">
       <button type="button">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          aria-hidden="true"
-          class="h-6 w-auto text-white"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-          ></path>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" class="h-6 w-auto text-white">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
         </svg>
       </button>
     </div>

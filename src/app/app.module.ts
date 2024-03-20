@@ -15,18 +15,13 @@ import {
 } from 'lucide-angular';
 import { RouterLink, RouterModule } from '@angular/router';
 
+
 @NgModule({
   declarations: [],
   providers: [],
   imports: [
     RouterLink,
-    ToastrModule.forRoot({
-      closeButton: true, // Show close button
-      progressBar: true, // Show progress bar
-      positionClass: 'toast-top-right', // Position of the toastr
-      timeOut: 3000, // Time to close the toastr automatically
-      preventDuplicates: true, // Prevent duplicate toasts
-    }),
+    ToastrModule.forRoot(),
     CommonModule,
     HttpClientModule,
     RouterModule,
