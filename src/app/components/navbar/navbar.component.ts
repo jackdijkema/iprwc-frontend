@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { LucideAngularModule } from 'lucide-angular'
 import { AuthService } from '../../../services/auth.service'
-import { Router, RouterLink, RouterModule } from '@angular/router'
+import { Router, RouterLink } from '@angular/router'
 import { CommonModule } from '@angular/common'
 import { AccountService } from '../../../services/account/account.service'
 import { User } from '../../../model/user'
